@@ -1,3 +1,41 @@
 * {
   box-sizing: border-box;
 }
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border: 0.5em solid lime;
+
+  h1 {
+    text-align: center;
+    margin: 1em;
+  }
+
+  label {
+    font-size: 1em;
+    margin-bottom: .3em;
+  }
+
+  input {
+    font-size: 1em;
+    background-color: azure;
+    padding: 0.3em;
+    margin-bottom: .3em;
+  }
+
+  button {
+    font-size: 1em;
+    padding: .2em;
+    background-color: darkcyan;
+    border: .2em solid darkcyan;
+
+    &:hover {
+      background-color: lightcyan;
+      border: .2em solid lightcyan;
+      color: black;
+      cursor: pointer;
+    }
+  }
+}
