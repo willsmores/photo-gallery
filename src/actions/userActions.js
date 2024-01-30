@@ -1,13 +1,13 @@
 "use server"
 
-import { redirect } from "next/dist/server/api-utils"
+import { redirect } from "next/navigation";
 
 export const authenticateUser = (formData) => {
   const email = formData.get("email");
   
   if (email === "scwillsmore@gmail.com") {
-    return redirect("/albums");
+    redirect("/albums");
   } else {
-    return redirect("/");
+    redirect("/");
   }
 };
