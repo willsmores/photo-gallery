@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:schema": "node ./src/db/schema.mjs",
+    "db:seed": "node ./src/db/seed.mjs"
   },
   "dependencies": {
     "@libsql/client": "^0.4.2",
