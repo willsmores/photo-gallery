@@ -1,5 +1,5 @@
-import { createClient } from "@libsql/client/.";
-
+import { createClient } from "@libsql/client";
+import "dotenv/config";
 
 const client = createClient({
   url: process.env.TURSO_URL,
@@ -19,4 +19,13 @@ export const runSeed = async (seed) => {
   return result;
 }
 
-runSeed(userSeed);
+const runAllSeeds = async () => {
+  try {
+    await runSeed(userSeed);
+    console.log("SEED OK");
+  } catch (err) {
+    console.log("SEED FAILED", err);
+  }
+}
+
+runAllSeeds();

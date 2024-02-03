@@ -1,4 +1,5 @@
-import { createClient } from "@libsql/client/.";
+import { createClient } from "@libsql/client";
+import "dotenv/config";
 
 const client = createClient({
   url: process.env.TURSO_URL,
@@ -7,6 +8,8 @@ const client = createClient({
 
 // Create users db schema
 const schema = `
+  DROP TABLE IF EXISTS users;
+
   CREATE TABLE users (
     id INTEGER PRIMARY KEY,
     first_name TEXT NOT NULL,
