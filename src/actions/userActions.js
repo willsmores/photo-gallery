@@ -1,6 +1,7 @@
 "use server"
 
 import { createClient } from "@libsql/client";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 const client = createClient({
@@ -24,5 +25,23 @@ export const authenticateUser = async (formData) => {
     return redirect("/");
   }
 
+  cookies().set("userId", user.id);
   return redirect("/albums");
 };
+
+export const getUserByCookie = async () => {
+  const userId = cookies().get("userId")?.value;
+
+  if (!userId) {
+    return null;
+  }
+
+  const result = await client.execute({ 
+    sql: "SELECT * FROM users WHERE id = ?", 
+    args: [userId],
+  });
+
+  console.log(result.rows[0]);
+
+  return result.rows[0];
+}
