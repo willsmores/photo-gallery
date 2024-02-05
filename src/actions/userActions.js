@@ -1,6 +1,7 @@
 "use server"
 
 import { createClient } from "@libsql/client";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 const client = createClient({
@@ -24,5 +25,6 @@ export const authenticateUser = async (formData) => {
     return redirect("/");
   }
 
+  cookies().set("userId", user.id);
   return redirect("/albums");
 };
