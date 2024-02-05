@@ -7,5 +7,6 @@ export const statement = `
 
 export const entries = [
   [1, "Holiday 2023"],
-  [2, "Pic Dump from Camera"],
+  [1, "Pic Dump from Camera"],
+  [2, "Summer Trip"],
 ]

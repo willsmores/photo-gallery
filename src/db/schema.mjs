@@ -8,8 +8,9 @@ const client = createClient({
 
 // Create users db schema
 const schema = `
-  DROP TABLE IF EXISTS users;
-  DROP TABLE IF EXISTS albums;
+DROP TABLE IF EXISTS photos;
+DROP TABLE IF EXISTS albums;
+DROP TABLE IF EXISTS users;
 
   CREATE TABLE users (
     id INTEGER PRIMARY KEY,
@@ -41,4 +42,4 @@ export const runSchema = async () => {
   return result;
 };
 
-runSchema().then(() => console.log("SUCCESS")).catch(() => console.log("WHOOPS"));
+runSchema().then(() => console.log("SCHEMA ✅")).catch((err) => console.log(`SCHEMA ⛔ ${err}`));
