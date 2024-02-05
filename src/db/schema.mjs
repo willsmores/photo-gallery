@@ -37,7 +37,7 @@ const schema = `
 `;
 
 export const runSchema = async () => {
-  const result = client.executeMultiple(schema);
+  const result = await client.executeMultiple(schema);
   return result;
 };
 
