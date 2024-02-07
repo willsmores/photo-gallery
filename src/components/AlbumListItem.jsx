@@ -7,7 +7,7 @@ export default function AlbumListItem(props) {
 
   return (
     <Link href={`/albums/${id}`}>
-      <article className="AlbumListItem" style={{ backgroundImage: `url({${url}})` }}>
+      <article className="AlbumListItem" style={{ backgroundImage: `url(${url})` }}>
         <h1>{title}</h1>
       </article>
     </Link>

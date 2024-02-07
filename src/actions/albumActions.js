@@ -14,11 +14,33 @@ export const getAlbumsByCookie = async () => {
     return null;
   }
 
+  const sql = `
+    SELECT *, photos.url
+    FROM albums
+    JOIN photos ON albums.cover_id = photos.id
+    WHERE albums.user_id = ?
+  `
+
   const result = await client.execute({ 
-    sql: "SELECT * FROM albums WHERE user_id = ?", 
+    sql: sql, 
     args: [userId],
   });
 
   return result.rows;
 }
 
+export const getPhotosByAlbumId = async (albumId) => {
+const sql = `
+  SELECT *, photos.url
+  FROM albums
+  JOIN photos ON albums.id = photos.album_id
+  WHERE albums.id = ?
+`
+
+const result = await client.execute({ 
+  sql: sql, 
+  args: [albumId],
+});
+
+return result.rows;
+}
