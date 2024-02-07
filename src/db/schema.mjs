@@ -23,6 +23,7 @@ DROP TABLE IF EXISTS users;
     id INTEGER PRIMARY KEY,
     user_id INTEGER NOT NULL,
     title TEXT NOT NULL,
+    cover_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
   );
 
