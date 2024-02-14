@@ -1,9 +1,12 @@
-import { getPhotosByAlbumId } from "@/actions/albumActions";
+import { getAlbumsByCookie, getPhotosByAlbumId, getAlbumTitleById } from "@/actions/albumActions";
 
 export default async function AlbumPage(props) {
 
   const { albumId } = props.params;
   console.log("Album ID:", albumId);
+
+  const albumTitle = await getAlbumTitleById(albumId);
+  console.log("Album Title:", albumTitle);
 
   const images = await getPhotosByAlbumId(albumId);
   console.log(images);
@@ -12,7 +15,7 @@ export default async function AlbumPage(props) {
   return (
     <div className="Page AlbumPage">
       <header>
-        <h1></h1>
+        <h1>{albumTitle}</h1>
       </header>
     </div>
   );

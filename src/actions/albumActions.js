@@ -44,3 +44,18 @@ const result = await client.execute({
 
 return result.rows;
 }
+
+export const getAlbumTitleById = async (albumId) => {
+  const sql = `
+    SELECT *
+    FROM albums
+    WHERE albums.id = ?
+  `
+  
+  const result = await client.execute({ 
+    sql: sql, 
+    args: [albumId],
+  });
+  
+  return result.rows[0].title;
+  }
