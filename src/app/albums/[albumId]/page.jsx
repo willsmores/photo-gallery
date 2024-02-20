@@ -12,13 +12,15 @@ export default async function AlbumPage(props) {
   const images = await getPhotosByAlbumId(albumId);
   console.log(images);
 
+  const linkRoot = `/albums/${albumId}`
+
   // Pass albums through as props
   return (
     <div className="Page AlbumPage">
       <header>
         <h1>{albumTitle}</h1>
       </header>
-      <PhotoList photos={images} />
+      <PhotoList photos={images} linkRoot={linkRoot} />
     </div>
   );
 }

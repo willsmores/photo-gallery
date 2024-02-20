@@ -3,11 +3,11 @@ import PhotoListItem from "./PhotoListItem";
 import "./PhotoList.scss";
 
 export default function PhotoList(props) {
-  const { photos } = props;
+  const { photos, linkRoot } = props;
   // console.log('photos:', photos);
 
   const parsedPhotos = photos.map(img => (
-    <Link key={img.id} href={'#'}>
+    <Link key={img.id} href={`${linkRoot}/view/${img.id}`}>
       <PhotoListItem {...img} />
     </Link>
   ))
