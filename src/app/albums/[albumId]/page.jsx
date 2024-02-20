@@ -1,4 +1,5 @@
 import { getAlbumsByCookie, getPhotosByAlbumId, getAlbumTitleById } from "@/actions/albumActions";
+import PhotoList from "@/components/PhotoList";
 
 export default async function AlbumPage(props) {
 
@@ -17,6 +18,7 @@ export default async function AlbumPage(props) {
       <header>
         <h1>{albumTitle}</h1>
       </header>
+      <PhotoList photos={images} />
     </div>
   );
 }
