@@ -4,13 +4,13 @@ import PhotoList from "@/components/PhotoList";
 export default async function AlbumPage(props) {
 
   const { albumId } = props.params;
-  console.log("Album ID:", albumId);
+  // console.log("Album ID:", albumId);
 
   const albumTitle = await getAlbumTitleById(albumId);
-  console.log("Album Title:", albumTitle);
+  // console.log("Album Title:", albumTitle);
 
   const images = await getPhotosByAlbumId(albumId);
-  console.log(images);
+  // console.log(images);
 
   const linkRoot = `/albums/${albumId}`
 

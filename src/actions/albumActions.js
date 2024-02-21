@@ -1,6 +1,7 @@
-import { cookies } from "next/headers";
+"use server";
 
-const { createClient } = require("@libsql/client");
+import { cookies } from "next/headers";
+const { createClient } = require("@libsql/client")
 
 const client = createClient({
   url: process.env.TURSO_URL,
@@ -8,7 +9,7 @@ const client = createClient({
 });
 
 export const getAlbumsByCookie = async () => {
-  const userId = cookies().get("userId")?.value;
+  const userId = Number(cookies().get("userId")?.value);
 
   if (!userId) {
     return null;
@@ -30,19 +31,28 @@ export const getAlbumsByCookie = async () => {
 }
 
 export const getPhotosByAlbumId = async (albumId) => {
-const sql = `
-  SELECT *, photos.url
-  FROM albums
-  JOIN photos ON albums.id = photos.album_id
-  WHERE albums.id = ?
-`
 
-const result = await client.execute({ 
-  sql: sql, 
-  args: [albumId],
-});
+  const userId = Number(cookies().get("userId")?.value);
 
-return result.rows;
+  const sql = `
+    SELECT *
+    FROM photos
+    JOIN albums ON albums.id = photos.album_id
+    WHERE album_id = ?
+  `;
+
+  const args = [albumId];
+
+  const result = await client.execute({ 
+    sql, 
+    args
+  });
+
+  if (result.rows[0].user_id !== userId) {
+    return redirect("/");
+  }
+
+  return result.rows;
 }
 
 export const getAlbumTitleById = async (albumId) => {
