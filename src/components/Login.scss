@@ -6,7 +6,8 @@
   display: flex;
   flex-direction: column;
   padding: 1em;
-  border: 0.5em solid lime;
+  border: 0.1em solid lightblue;
+  border-radius: 1em;
 
   h1 {
     text-align: center;
@@ -20,21 +21,27 @@
 
   input {
     font-size: 1em;
-    background-color: azure;
-    padding: 0.3em;
+    background-color: white;
+    padding: 0.5em;
     margin-bottom: .3em;
+    border: .1em solid white;
+    border-radius: .3em;
   }
 
   button {
+    color: black;
     font-size: 1em;
     padding: .2em;
-    background-color: darkcyan;
-    border: .2em solid darkcyan;
+    background-color: lightblue;
+    border: .1em solid lightblue;
+    min-width: 100px;
+    margin: .3em auto;
+    border-radius: .3em;
 
     &:hover {
-      background-color: lightcyan;
-      border: .2em solid lightcyan;
-      color: black;
+      background-color: darkslateblue;
+      border: .1em solid lightblue;
+      color: lightblue;
       cursor: pointer;
     }
   }

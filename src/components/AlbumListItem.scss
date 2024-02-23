@@ -30,6 +30,12 @@ body {
   justify-content: flex-end;
   align-items: flex-end;
 
+  transition: .5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
   h1,
   h2 {
     margin: 0;
@@ -37,6 +43,9 @@ body {
     background: black;
     color: white;
     font-size: 1.5em;
+    border-top: 0.1em solid lightblue;
+    border-left: 0.1em solid lightblue;
+    border-top-left-radius: 0.5em;
   }
 
   h1 {
